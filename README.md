@@ -106,5 +106,4 @@ skripsistis-overleaf/
 
 - Logo STIS (`img/logo_stis.png`) adalah milik Politeknik Statistika STIS dan
   disertakan hanya untuk keperluan templat skripsi institusi.
-- Bila Program Studi mensyaratkan kotak meterai pada halaman Pernyataan, tambahkan
-  sendiri pada `frontmatter/00-halaman-muka.tex`.
+
