@@ -3,7 +3,10 @@
 Template LaTeX (Overleaf) untuk skripsi Prodi D-IV Komputasi Statistik, disusun
 mengikuti **Pedoman Penyusunan Skripsi Edisi Keenam (2025)**. Template ini adalah
 versi LaTeX murni dari paket R `skripsistis`, sehingga format (margin, font, judul
-bab, tabel, gambar, persamaan, daftar pustaka) sudah sesuai pedoman.
+bab, tabel, gambar, persamaan, daftar pustaka) dibuat supaya sesuai pedoman. Template 
+ini dalam versi pengembangan yang memungkinkan hasilnya belum sesuai pedoman sepenuhnya. 
+Masukan dan koreksi sangat diharapkan.
+
 
 ## Cara memakai di Overleaf
 
