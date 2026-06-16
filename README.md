@@ -10,7 +10,7 @@ Masukan dan koreksi sangat diharapkan.
 
 ## Cara memakai di Overleaf
 
-1. **Unggah** berkas `skripsistis-overleaf.zip` ke Overleaf
+1. Simpan menjadi zip dan **Unggah** berkas `latexskripsistis.zip` ke Overleaf
    (New Project → Upload Project), atau salin seluruh berkas ke proyek baru.
 2. **Setel compiler ke XeLaTeX**: Menu → Settings → Compiler → **XeLaTeX**.
    (Wajib, karena memakai `fontspec`/Times New Roman. Berkas `latexmkrc` juga
