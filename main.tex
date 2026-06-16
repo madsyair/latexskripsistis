@@ -1,0 +1,110 @@
+% !TEX program = xelatex
+% ============================================================
+%  TEMPLATE SKRIPSI POLITEKNIK STATISTIKA STIS
+%  Prodi D-IV Komputasi Statistik  |  Pedoman Edisi Keenam (2025)
+%
+%  PENTING (Overleaf): Menu -> Settings -> Compiler -> "XeLaTeX".
+%  Berkas latexmkrc sudah memaksa XeLaTeX + Biber bila pengaturan
+%  menu tidak diubah. Jangan memakai pdfLaTeX.
+% ============================================================
+\documentclass[12pt,a4paper,twoside,openright,fleqn]{report}
+
+\usepackage{skripsistis}        % seluruh format STIS (lihat skripsistis.sty)
+\addbibresource{referensi.bib}  % basis data referensi (BibTeX)
+
+% ------------------------------------------------------------
+%  METADATA SKRIPSI (isi sesuai data Anda)
+% ------------------------------------------------------------
+% PEMINATAN: hilangkan tanda komentar baris berikut untuk Sistem Informasi
+% Statistik (enam bab). Biarkan dikomentari untuk Sains Data (lima bab).
+% \peminatansitrue
+%
+\judulskripsi{Pemodelan Proxy Means Test Berbasis GPBoost untuk Penargetan Kemiskinan}
+\subjudulskripsi{}              % kosongkan bila tidak ada subjudul
+\namamhs{Achmad Syahrul Choir}
+\nimmhs{222212501}
+\peminatan{Sains Data}          % atau: Sistem Informasi Statistik
+\tahunskripsi{2026}
+\tglsidang{[tanggal sidang]}
+\pengujiI{Dr. Penguji Satu, M.Si.}      \nipPengujiI{0000}
+\pengujiII{Dr. Penguji Dua, M.Si.}      \nipPengujiII{0000}
+\ketuaprodi{Dr. Ketua Prodi, M.Si.}     \nipKetuaprodi{0000}
+\pembimbing{Dr. Pembimbing, M.Si.}      \nipPembimbing{0000}
+
+\begin{document}
+
+% ====================== HALAMAN MUKA ========================
+\input{frontmatter/00-halaman-muka.tex}   % sampul, judul, pernyataan, pengesahan, hak cipta
+
+% Bagian awal: angka Romawi kecil, dimulai dari Prakata, di tengah bawah.
+% Di bagian awal, setiap bagian cukup pindah halaman (tanpa sisipan halaman
+% kosong); penyisipan "halaman kosong" hanya berlaku untuk bab isi (openright).
+\pagenumbering{roman}
+\setcounter{page}{1}
+\let\skClearDouble\cleardoublepage
+\let\cleardoublepage\clearpage
+
+\input{frontmatter/01-prakata.tex}
+\input{frontmatter/02-abstrak.tex}
+
+% Daftar-daftar (masing-masing didaftarkan ke Daftar Isi & DI HALAMAN TERPISAH)
+\clearpage
+\addcontentsline{toc}{chapter}{DAFTAR ISI}
+\tableofcontents
+\clearpage
+\addcontentsline{toc}{chapter}{DAFTAR TABEL}
+\listoftables
+\clearpage
+\addcontentsline{toc}{chapter}{DAFTAR GAMBAR}
+\listoffigures
+\clearpage
+\addcontentsline{toc}{chapter}{DAFTAR LAMPIRAN}
+\listoflampiran
+
+% Daftar Singkatan & Simbol (OPSIONAL -- hapus dua baris ini bila tak diperlukan)
+\input{frontmatter/03-daftar-singkatan.tex}
+\input{frontmatter/04-daftar-simbol.tex}
+
+% Penanda akhir bagian awal (untuk hitung "x+N halaman" pada Abstrak).
+\clearpage
+\label{akhirfront}
+
+% ======================= BAGIAN ISI =========================
+% Bagian isi: angka Arab, dimulai dari 1, di kanan bawah (pedoman).
+% Pulihkan perilaku openright (bab isi mulai di halaman ganjil/kanan).
+\let\cleardoublepage\skClearDouble
+\cleardoublepage
+\aktifkanNomorIsi
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\doublespacing                 % teks isi diketik 2 spasi (pedoman hlm. 34)
+
+\input{bab/bab1-pendahuluan.tex}
+\input{bab/bab2-tinjauan-pustaka.tex}
+\ifpeminatansi
+  % --- Peminatan SISTEM INFORMASI STATISTIK (enam bab) ---
+  \input{bab/bab3-metodologi-si.tex}
+  \input{bab/bab4-analisis-perancangan.tex}
+  \input{bab/bab5-implementasi-evaluasi.tex}
+  \input{bab/bab6-kesimpulan.tex}
+\else
+  % --- Peminatan SAINS DATA / Analisis (lima bab) ---
+  \input{bab/bab3-metode.tex}
+  \input{bab/bab4-hasil.tex}
+  \input{bab/bab5-kesimpulan.tex}
+\fi
+
+% ===================== DAFTAR PUSTAKA ========================
+\begingroup
+\singlespacing                 % daftar pustaka 1 spasi di dalam entri
+\setlength{\bibitemsep}{0.5\baselineskip}  % jarak antar-entri ~1,5 spasi
+\printbibliography[heading=bibintoc,title={DAFTAR PUSTAKA}]
+\endgroup
+
+% ======================== LAMPIRAN ==========================
+\input{belakang/lampiran.tex}
+
+% ===================== RIWAYAT HIDUP ========================
+\input{belakang/riwayat-hidup.tex}
+
+\end{document}

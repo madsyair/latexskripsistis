@@ -1,0 +1,91 @@
+\chapter{Tinjauan Pustaka}
+
+\section{Landasan Teori}
+Bagian ini memuat teori yang menjadi dasar penelitian. Konsep dan sifat formal
+dapat dinyatakan dengan lingkungan definisi, teorema, dan bukti berbahasa Indonesia.
+
+\begin{definisi}[Proxy Means Test]
+Misalkan $y_i$ menyatakan log pengeluaran per kapita rumah tangga ke-$i$ dan
+$\mathbf{x}_i$ vektor karakteristik teramati. \emph{Proxy Means Test} adalah fungsi
+prediksi $\hat{f}:\mathbf{x}_i \mapsto \hat{y}_i$ yang diperoleh dengan meminimumkan
+suatu fungsi galat $\sum_i L\!\left(y_i,\hat{f}(\mathbf{x}_i)\right)$.
+\end{definisi}
+
+\begin{teorema}\label{teo:ols}
+Pada model linear $y = \mathbf{X}\beta + \varepsilon$ dengan
+$\mathrm{E}(\varepsilon \mid \mathbf{X}) = \mathbf{0}$, penduga kuadrat terkecil
+$\hat{\beta} = (\mathbf{X}^\top\mathbf{X})^{-1}\mathbf{X}^\top y$ bersifat takbias.
+\end{teorema}
+
+\begin{proof}
+Substitusi $y = \mathbf{X}\beta + \varepsilon$ memberikan
+$\hat{\beta} = \beta + (\mathbf{X}^\top\mathbf{X})^{-1}\mathbf{X}^\top\varepsilon$.
+Karena $\mathrm{E}(\varepsilon \mid \mathbf{X}) = \mathbf{0}$, maka
+$\mathrm{E}(\hat{\beta} \mid \mathbf{X}) = \beta$.
+\end{proof}
+
+\section{Penelitian Terkait}
+Beberapa penelitian terdahulu mengembangkan PMT dengan pendekatan
+\emph{machine learning} \parencite{etang2022,taufiq2021}.
+
+\section{Penulisan Kutipan}
+Format sitasi mengikuti APA versi 7 dengan penyesuaian bahasa Indonesia
+(\emph{dan} untuk dua pengarang, \emph{dkk.} untuk lebih dari dua pengarang,
+\emph{hal.} untuk halaman).
+
+\subsection{Kutipan Tidak Langsung (Parafrase)}
+Kutipan tidak langsung mencantumkan nama pengarang dan tahun \emph{tanpa} nomor
+halaman. Satu pengarang: \textcite{cochran1991} memformalkan teori penarikan
+sampel. Dua pengarang: \textcite{taufiq2021} membandingkan beberapa algoritma.
+Lebih dari dua pengarang: \textcite{etang2022} menekankan pentingnya validasi
+silang. Versi dalam kurung berturut-turut: \parencite{cochran1991};
+\parencite{taufiq2021}; \parencite{etang2022}.
+
+\subsection{Kutipan Langsung Pendek (kurang dari atau sama dengan 40 kata)}
+Kutipan langsung pendek diberi tanda kutip serta nomor halaman. Naratif (nomor
+halaman di akhir kutipan): \textcite{cochran1991} menyatakan bahwa ``penarikan
+sampel acak sederhana memberikan estimasi takbias bagi rata-rata populasi''
+(hal.~10). Dalam kurung: ``replikasi data memungkinkan akses yang konsisten
+lintas waktu'' \parencite[hal.~781]{taufiq2021}.
+
+\subsection{Kutipan Langsung Panjang (lebih dari 40 kata)}
+Kutipan langsung panjang ditulis pada paragraf tersendiri, menjorok 1 tab dari
+batas kiri teks, tanpa tanda kutip:
+\begin{kutipanpanjang}
+Proxy means testing merupakan pendekatan yang banyak dipakai untuk menargetkan
+bantuan sosial ketika data pendapatan rumah tangga tidak tersedia atau sulit
+diverifikasi; metode ini menaksir kesejahteraan dari sejumlah peubah proksi yang
+mudah diamati, sehingga keputusan penargetan dapat dilakukan secara lebih objektif
+dan dapat direplikasi \parencite[hal.~25]{etang2022}.
+\end{kutipanpanjang}
+
+\subsection{Mengutip dari Kutipan (Sitasi Sekunder)}
+Diperbolehkan bila pustaka asli sulit ditemukan: nama pengarang asli dicantumkan
+pada kalimat, sumber sekunder (tempat kutipan ditemukan) pada akhir kalimat.
+Menurut Nelder dan Wedderburn (1972), seperti dikutip dalam
+\textcite{cochran1991}, prinsip estimasi takbias menjadi dasar banyak metode
+inferensi. Pada Daftar Pustaka hanya dicantumkan sumber sekunder yang
+benar-benar dibaca (Cochran), bukan sumber asli (Nelder dan Wedderburn).
+
+\subsection{Sitasi Lembaga/Instansi Pemerintah}
+Bila penulis berupa lembaga/instansi, pada \textbf{kemunculan pertama} ditulis
+nama lengkap diikuti akronim, lalu \textbf{kemunculan selanjutnya} cukup akronim
+(pedoman 4.4). Pada entri bib: \verb|author = {{Badan Pusat Statistik}}| (kurung
+ganda agar tidak dipenggal) dan \verb|shortauthor = {BPS}|.
+
+Kemunculan pertama (naratif): \textcite{bps2024} menetapkan garis kemiskinan
+secara nasional. Dalam kurung: \parencite{bps2024}. Kemunculan selanjutnya cukup
+akronim: \textcite{bps2024}, atau \parencite{bps2024}. Pada Daftar Pustaka, nama
+lembaga \emph{selalu} ditulis lengkap (Badan Pusat Statistik), bukan akronim.
+
+\subsection{Sitasi Direktorat di Bawah Kementerian}
+Bila karya disusun oleh suatu \textbf{direktorat di bawah kementerian}, ikuti
+APA-7: unit \textbf{paling spesifik menjadi penulis}, kementerian induk menjadi
+\textbf{penerbit} (jangan menggabung keduanya sebagai satu nama). Pada entri bib:
+\verb|author = {{Direktorat Jenderal Pembangunan Desa dan Perdesaan}}|,
+\verb|shortauthor = {Ditjen PDP}|, dan \verb|institution = {Kementerian ...}|.
+
+Kemunculan pertama: \textcite{ditjenpdp2023} menyusun pedoman alokasi dana desa.
+Selanjutnya: \textcite{ditjenpdp2023}; atau dalam kurung \parencite{ditjenpdp2023}.
+Pada Daftar Pustaka, nama direktorat (penulis) diikuti judul, lalu kementerian
+sebagai penerbit.

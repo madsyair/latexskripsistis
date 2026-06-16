@@ -1,0 +1,180 @@
+% ============================================================
+%  Halaman muka: Sampul, Halaman Judul, Pernyataan, Pengesahan,
+%  dan Lembar Hak Cipta. Isi diambil dari metadata di main.tex.
+% ============================================================
+\begin{titlepage}
+\pagenumbering{gobble}
+\singlespacing   % seluruh halaman muka diketik 1 spasi (kecuali blok yang diatur)
+\centering
+
+% Subjudul opsional (jarak antar baris sub judul 1,5 spasi; pedoman).
+\newcommand{\skSubjudulBlok}{%
+  \ifdefempty{\skSubjudul}{}{%
+    \par\vspace{\spasi}%
+    {\bfseries\fontsize{14}{21}\selectfont\skSubjudul\par}}%
+}
+
+% ---------- HALAMAN SAMPUL ----------
+\vspace*{-0.7\spasi}  % kompensasi leading; judul mulai ~baris kedua
+% Judul: kapital, TNR 14 pt, jarak antar baris 2 spasi (pedoman).
+{\bfseries\fontsize{14}{28}\selectfont\MakeUppercase{\skJudul}\par}
+\skSubjudulBlok
+
+% Jarak Nama dengan baris terakhir judul/sub judul = 5 spasi (pedoman).
+\vspace{5\spasi}
+% Nama & NIM: kapital, TNR 12 pt, jarak Nama-NIM 1,5 spasi (pedoman).
+{\bfseries\fontsize{12}{18}\selectfont%
+  \MakeUppercase{\skNama}\\ \skNIM\par}
+
+% Jarak Program Studi dengan NIM = 4,5 spasi (pedoman).
+\vspace{4.5\spasi}
+% Program Studi & Peminatan: TNR 12 pt, blok di TENGAH (nilai membungkus).
+{\bfseries\fontsize{12}{12}\selectfont
+\begin{tabular}{@{}l@{\hspace{0.6em}}c@{\hspace{0.6em}}>{\raggedright\arraybackslash}p{6.7cm}@{}}
+\textbf{PROGRAM STUDI} & : & \textbf{KOMPUTASI STATISTIK PROGRAM DIPLOMA IV} \\
+\textbf{PEMINATAN}     & : & \textbf{\MakeUppercase{\skPeminatan}} \\
+\end{tabular}\par}
+
+\vfill
+% Logo 5 cm x 5 cm, simetris antara Program Studi dan tulisan STIS (pedoman).
+\IfFileExists{img/logo_stis.png}{\includegraphics[width=5cm,height=5cm,keepaspectratio]{img/logo_stis.png}\par}{\rule{0pt}{5cm}\par}
+\vfill
+
+% Tiga baris terakhir: kapital, TNR 14 pt, jarak antar baris 1,5 spasi (pedoman).
+{\bfseries\fontsize{14}{21}\selectfont%
+  POLITEKNIK STATISTIKA STIS\\ JAKARTA\\ \skTahun\par}
+\clearpage
+
+% ---------- HALAMAN JUDUL ----------
+\thispagestyle{empty}
+\centering
+\vspace*{-0.7\spasi}
+% Judul: format sama dengan halaman sampul.
+{\bfseries\fontsize{14}{28}\selectfont\MakeUppercase{\skJudul}\par}
+\skSubjudulBlok
+
+% Tulisan SKRIPSI berjarak 5 spasi setelah baris terakhir judul/sub judul (pedoman).
+\vspace{5\spasi}
+{\bfseries\fontsize{12}{12}\selectfont SKRIPSI\par}
+% "Diajukan sebagai ..." jarak antar baris 1,5 spasi (pedoman).
+\vspace{\spasi}
+{\bfseries\fontsize{12}{18}\selectfont%
+  Diajukan sebagai Salah Satu Syarat untuk Memperoleh Sebutan\\
+  Sarjana Terapan Statistika pada Politeknik Statistika STIS\par}
+
+% "Oleh:" pada baris ketiga (3 spasi) setelah tulisan sebelumnya (pedoman).
+\vspace{3\spasi}
+{\bfseries\fontsize{12}{12}\selectfont Oleh:\par}
+{\bfseries\fontsize{12}{18}\selectfont%
+  \MakeUppercase{\skNama}\\ \skNIM\par}
+
+\vfill
+\IfFileExists{img/logo_stis.png}{\includegraphics[width=5cm,height=5cm,keepaspectratio]{img/logo_stis.png}\par}{\rule{0pt}{5cm}\par}
+\vfill
+
+{\bfseries\fontsize{14}{21}\selectfont%
+  POLITEKNIK STATISTIKA STIS\\ JAKARTA\\ \skTahun\par}
+\clearpage
+
+% ---------- HALAMAN PERNYATAAN ----------
+% Catatan: tanggal pada halaman ini = TANGGAL SIDANG/UJIAN AKHIR.
+\thispagestyle{empty}
+\begin{center}{\bfseries\large PERNYATAAN}\end{center}
+\vspace{0.8cm}
+\begin{center}
+{\bfseries Skripsi dengan Judul\par}
+\vspace{0.4cm}
+{\bfseries \MakeUppercase{\skJudul}\par}
+\ifdefempty{\skSubjudul}{}{{\bfseries \skSubjudul\par}}
+\end{center}
+\vspace{1.2cm}
+
+\begin{center}
+Oleh:\\[0.2cm]
+\textbf{\MakeUppercase{\skNama}}\\
+\textbf{\skNIM}
+\end{center}
+\vspace{1.2cm}
+
+\noindent\justifying adalah benar-benar hasil penelitian sendiri dan bukan hasil plagiat
+atau hasil karya orang lain. Jika di kemudian hari diketahui ternyata skripsi ini hasil
+plagiat atau hasil karya orang lain, penulis bersedia skripsi ini dinyatakan tidak sah
+dan sebutan Sarjana Terapan Statistika dicabut atau dibatalkan.
+\vspace{1.5cm}
+
+\begin{flushright}
+\begin{minipage}{7cm}\centering
+Jakarta, \skTglSidang\ \skTahun\\[2.2cm]
+\textbf{\skNama}
+\end{minipage}
+\end{flushright}
+\clearpage
+
+% ---------- HALAMAN PENGESAHAN ----------
+\thispagestyle{empty}
+\begin{center}{\bfseries\large \MakeUppercase{\skJudul}}\end{center}
+\ifdefempty{\skSubjudul}{}{\begin{center}{\bfseries \skSubjudul}\end{center}}
+\vspace{0.6cm}
+\begin{center}Oleh:\\[0.2cm]\textbf{\MakeUppercase{\skNama}}\\ \textbf{\skNIM}\end{center}
+\vspace{0.8cm}
+
+\begingroup
+\small
+\newcommand{\ttdblok}[3]{% #1 jabatan, #2 nama (bold), #3 NIP
+  \begin{minipage}[t]{0.5\textwidth}\centering
+  \begin{minipage}[t][2.2\baselineskip][t]{\linewidth}\centering #1\end{minipage}\\[2cm]
+  \textbf{#2}\\
+  NIP #3
+  \end{minipage}%
+}
+
+\begin{center}\normalsize\textbf{Tim Penguji}\end{center}
+\vspace{0.2cm}
+\noindent
+\ttdblok{Penguji I}{\skPengujiI}{\skNIPpengujiI}\hfill
+\ttdblok{Penguji II}{\skPengujiII}{\skNIPpengujiII}
+\vspace{1cm}
+
+\begin{center}\normalsize Mengetahui/Menyetujui\end{center}
+\vspace{0.2cm}
+\noindent
+\ttdblok{Ketua Program Studi\\Komputasi Statistik Program Diploma IV}{\skKaprodi}{\skNIPkaprodi}\hfill
+\ttdblok{Pembimbing}{\skPembimbing}{\skNIPpembimbing}
+\endgroup
+\clearpage
+
+% ---------- LEMBAR HAK CIPTA ----------
+\thispagestyle{empty}
+\vspace*{\fill}
+\begin{center}
+\fbox{%
+  \begin{minipage}{0.78\textwidth}
+  \itshape
+  \setlength{\parindent}{0pt}
+  \vspace{0.5\baselineskip}
+  {\bfseries \textcopyright\ Hak Cipta milik Politeknik Statistika STIS, Tahun \skTahun}
+
+  \vspace{0.5\baselineskip}
+  {\bfseries Hak Cipta dilindungi undang-undang}
+  \begin{enumerate}[leftmargin=*,labelsep=0.5em,topsep=0.3\baselineskip,itemsep=0.2\baselineskip]
+    \item Dilarang mengutip sebagian atau seluruh karya tulis, hasil analisis,
+          perancangan, basis data, program, dan artefak hasil skripsi ini tanpa
+          mencantumkan atau menyebutkan sumbernya.
+      \begin{enumerate}[label=\alph*.,leftmargin=1.5em,labelsep=0.5em,topsep=0.2\baselineskip,itemsep=0.2\baselineskip]
+        \item Pengutipan hanya untuk kepentingan pendidikan, penelitian, penulisan
+              karya ilmiah, penyusunan laporan, penulisan kritik atau tinjauan suatu
+              masalah.
+        \item Pengutipan tidak merugikan kepentingan yang wajar Politeknik Statistika
+              STIS.
+      \end{enumerate}
+    \item Dilarang mengumumkan dan memperbanyak sebagian atau seluruh karya tulis,
+          hasil analisis, perancangan, basis data, program, dan artefak hasil skripsi
+          ini dalam bentuk apa pun tanpa seizin Politeknik Statistika STIS.
+  \end{enumerate}
+  \vspace{0.3\baselineskip}
+  \end{minipage}%
+}
+\end{center}
+\vspace*{\fill}
+\clearpage
+\end{titlepage}

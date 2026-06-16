@@ -1,0 +1,30 @@
+\chapter{Metode Penelitian}
+
+\section{Data dan Kebutuhan Sistem}
+Bagian ini menjelaskan sumber data (mis.\ basis data BPS) serta kebutuhan sistem
+yang akan dikembangkan.
+
+\section{Metodologi Pengembangan Sistem}
+Pengembangan sistem mengikuti pendekatan \emph{System Development Life Cycle}
+(SDLC) dengan model \emph{prototyping}. Tahapan pengembangan disajikan pada
+Gambar~\ref{gbr:sdlc}.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[node distance=0.95cm]
+  \node[fc-mulai] (a) {Komunikasi/Analisis Kebutuhan};
+  \node[fc-proses, below=of a] (b) {Perancangan Cepat (Prototipe)};
+  \node[fc-proses, below=of b] (c) {Pembangunan Prototipe};
+  \node[fc-putusan, below=of c] (d) {Diterima?};
+  \node[fc-proses, below=of d] (e) {Implementasi \& Pengujian};
+  \draw[fc-panah] (a)--(b); \draw[fc-panah] (b)--(c); \draw[fc-panah] (c)--(d);
+  \draw[fc-panah] (d)-- node[right]{ya} (e);
+  \draw[fc-panah] (d.west) -- ++(-2.2,0) |- node[pos=0.25,left]{tidak} (b.west);
+\end{tikzpicture}
+\caption{Tahapan pengembangan sistem dengan model prototyping}
+\label{gbr:sdlc}
+\end{figure}
+
+\section{Alat dan Bahan}
+Perangkat lunak dan pustaka yang digunakan, antara lain bahasa pemrograman,
+kerangka kerja (\emph{framework}), dan sistem manajemen basis data.

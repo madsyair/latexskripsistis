@@ -1,0 +1,27 @@
+% ---------- LAMPIRAN ----------
+% Judul "LAMPIRAN" sebagai bab tak bernomor; tiap lampiran didaftarkan via
+% \lampiran{Judul} agar muncul di Daftar Lampiran.
+\judulfrontmatter{Lampiran}{LAMPIRAN}
+
+\lampiran{Daftar Perintah/Kode yang Digunakan}
+\noindent\textbf{Lampiran 1. Daftar Perintah/Kode yang Digunakan}
+\vspace{0.3cm}
+
+Lampiran memuat materi pendukung yang terlalu panjang untuk badan teks, misalnya
+potongan kode, kuesioner, atau tabel rinci. Potongan kode disajikan dengan
+lingkungan \texttt{lstlisting} (baris yang panjang otomatis dilipat):
+
+\begin{lstlisting}[language=R]
+# Contoh kode R: estimasi model proxy means test dengan validasi silang
+library(caret)
+set.seed(123)
+kontrol <- trainControl(method = "cv", number = 10)
+model <- train(log_pengeluaran ~ ., data = rumah_tangga, method = "ranger", trControl = kontrol, importance = "permutation")
+print(model$results)
+\end{lstlisting}
+
+\lampiran{Output Tambahan}
+\noindent\textbf{Lampiran 2. Output Tambahan}
+\vspace{0.3cm}
+
+Isi lampiran kedua.

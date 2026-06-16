@@ -1,0 +1,117 @@
+\chapter{Hasil dan Pembahasan}
+
+\section{Gambaran Umum Data}
+Bagian ini menyajikan gambaran umum data yang digunakan.
+
+\section{Contoh Penyajian Tabel}
+Tabel~\ref{tab:miskin} menyajikan jumlah dan persentase penduduk miskin menurut
+daerah. Judul tabel diletakkan di ATAS, diberi baris nomor kolom (1), (2), (3),
+dan baris Sumber di bawah (untuk data sekunder).
+
+\begin{table}[H]
+\centering
+% Judul tabel: DI ATAS, DIPUSATKAN (center).
+\caption{Jumlah dan persentase penduduk miskin menurut daerah}
+\label{tab:miskin}
+% Bungkus tabel agar lebarnya diketahui -> Sumber bisa diletakkan tepat di tepi
+% kiri tabel.
+\sbox\skripsiblokbox{\begin{tabular}{|l|r|r|}
+\hline
+\textbf{Daerah} & \textbf{Jumlah (ribu orang)} & \textbf{Persentase (\%)} \\ \hline
+\multicolumn{1}{|c|}{(1)} & \multicolumn{1}{c|}{(2)} & \multicolumn{1}{c|}{(3)} \\ \hline
+Perkotaan  & 1.641,18 & 7,00 \\
+Perdesaan  & 2.234,70 & 12,86 \\ \hline
+Total      & 3.875,88 & 9,50 \\ \hline
+\end{tabular}}%
+\usebox\skripsiblokbox\par
+\addvspace{0.2\baselineskip}
+% Sumber: tepat di tepi kiri tabel.
+\parbox[t]{\wd\skripsiblokbox}{\raggedright\setlength{\parindent}{0pt}\small Sumber: Badan Pusat Statistik (data ilustrasi)}
+\end{table}
+
+\section{Contoh Tabel Panjang (Lintas-Halaman)}
+Bila tabel melampaui satu halaman, gunakan \texttt{xltabular} agar judul kolom dan
+baris nomor kolom terulang otomatis pada setiap halaman dengan keterangan
+``Tabel~N (lanjutan)''. Tabel panjang dibuat berlebar minimal 80\% lebar teks dan
+dipusatkan (kolom label melebar, kolom angka tetap ringkas).
+
+\begin{singlespace}
+\setlength{\LTcapwidth}{\textwidth}   % judul DIPUSATKAN di lebar teks (center)
+\begin{xltabular}{0.8\textwidth}{|r|>{\raggedright\arraybackslash}X|r|r|}
+\caption{Contoh tabel panjang lintas-halaman (data ilustrasi)}\label{tab:panjang}\\
+\hline
+\textbf{No.} & \textbf{Kabupaten/Kota} & \textbf{Jumlah (ribu)} & \textbf{Persentase (\%)} \\ \hline
+\multicolumn{1}{|c|}{(1)} & \multicolumn{1}{c|}{(2)} & \multicolumn{1}{c|}{(3)} & \multicolumn{1}{c|}{(4)} \\ \hline
+\endfirsthead
+\multicolumn{4}{l}{\small Tabel \thetable\ (lanjutan)}\\ \hline
+\textbf{No.} & \textbf{Kabupaten/Kota} & \textbf{Jumlah (ribu)} & \textbf{Persentase (\%)} \\ \hline
+\multicolumn{1}{|c|}{(1)} & \multicolumn{1}{c|}{(2)} & \multicolumn{1}{c|}{(3)} & \multicolumn{1}{c|}{(4)} \\ \hline
+\endhead
+\hline \endfoot
+\hline \endlastfoot
+1  & Kabupaten 01 & 275,7 & 15,31 \\
+2  & Kabupaten 02 & 366,3 & 12,71 \\
+3  & Kabupaten 03 & 536,9 & 14,74 \\
+4  & Kabupaten 04 & 822,0 & 11,30 \\
+5  & Kabupaten 05 & 221,4 & 10,95 \\
+\end{xltabular}
+\par\addvspace{0.2\baselineskip}
+\centerline{\parbox[t]{0.8\textwidth}{\raggedright\setlength{\parindent}{0pt}\small Sumber: Badan Pusat Statistik (data ilustrasi)}}
+\end{singlespace}
+
+\section{Contoh Penyajian Gambar}
+Gambar~\ref{gbr:bar} menyajikan persentase penduduk miskin menurut daerah. Judul
+gambar diletakkan di BAWAH dan DIPUSATKAN; urutan: gambar, Sumber (tepi kiri gambar), lalu judul (pedoman).
+
+\begin{figure}[H]
+\centering
+% Bungkus gambar dalam kotak agar lebarnya diketahui (untuk meletakkan Sumber
+% tepat di tepi kiri gambar). Untuk gambar berkas, ganti tikzpicture dgn
+% \includegraphics[...]{...}.
+\sbox\skripsiblokbox{\begin{tikzpicture}
+  \foreach \x/\h/\lbl in {0/2.1/Perkotaan, 2/3.9/Perdesaan, 4/2.85/Total} {
+    \fill[gray!55] (\x,0) rectangle (\x+1.2,\h);
+    \node[below] at (\x+0.6,0) {\small \lbl};
+  }
+  \draw[->] (-0.3,0) -- (5.6,0);
+  \draw[->] (-0.3,0) -- (-0.3,4.4) node[above,rotate=90,anchor=south west,xshift=-3.2cm]{\small Persentase (\%)};
+\end{tikzpicture}}%
+\usebox\skripsiblokbox\par
+\addvspace{0.15\sjudul}
+% Sumber: tepat di TEPI KIRI gambar, diletakkan SEBELUM judul (pedoman).
+\parbox[t]{\wd\skripsiblokbox}{\raggedright\setlength{\parindent}{0pt}\small Sumber: diolah dari Tabel~\ref{tab:miskin} (data ilustrasi)}\par
+% Judul gambar: di BAWAH gambar/sumber, DIPUSATKAN (center).
+\caption{Persentase penduduk miskin menurut daerah}
+\label{gbr:bar}
+\end{figure}
+
+Berdasarkan Gambar~\ref{gbr:bar}, persentase kemiskinan di perdesaan lebih tinggi
+dibandingkan perkotaan.
+
+\section{Contoh Tabel Lebar (Orientasi \emph{Landscape})}
+Tabel yang terlalu lebar untuk orientasi potret dapat disajikan pada halaman
+\emph{landscape}, atau diperkecil hingga ukuran huruf minimal 8 pt (pedoman).
+Tabel~\ref{tab:lebar} menyajikan contoh tabel lebar berorientasi \emph{landscape};
+judul tetap di batas kiri teks (kiri halaman \emph{landscape}) dan sumber di
+bawah-kiri, sedangkan tabel diletakkan di tengah.
+
+\begin{landscape}
+\begin{table}[H]
+\centering
+\caption{Contoh tabel lebar berorientasi landscape dengan banyak kolom (data ilustrasi)}
+\label{tab:lebar}
+\sbox\skripsiblokbox{\begin{tabular}{|l|r|r|r|r|r|r|r|r|}
+\hline
+\textbf{Provinsi} & \textbf{2018} & \textbf{2019} & \textbf{2020} & \textbf{2021} & \textbf{2022} & \textbf{2023} & \textbf{2024} & \textbf{2025} \\ \hline
+\multicolumn{1}{|c|}{(1)} & \multicolumn{1}{c|}{(2)} & \multicolumn{1}{c|}{(3)} & \multicolumn{1}{c|}{(4)} & \multicolumn{1}{c|}{(5)} & \multicolumn{1}{c|}{(6)} & \multicolumn{1}{c|}{(7)} & \multicolumn{1}{c|}{(8)} & \multicolumn{1}{c|}{(9)} \\ \hline
+Aceh        & 15,68 & 15,32 & 14,99 & 15,33 & 14,75 & 14,45 & 14,23 & 13,98 \\
+Sumatera Utara & 8,94 & 8,83 & 8,75 & 9,01 & 8,42 & 8,15 & 7,99 & 7,80 \\
+Jawa Barat  & 7,25 & 6,91 & 7,88 & 8,40 & 7,98 & 7,62 & 7,41 & 7,20 \\
+Jawa Tengah & 11,32 & 10,80 & 11,41 & 11,79 & 10,93 & 10,77 & 10,51 & 10,30 \\
+DI Yogyakarta & 11,81 & 11,44 & 12,28 & 11,91 & 11,49 & 11,04 & 10,83 & 10,62 \\ \hline
+\end{tabular}}%
+\usebox\skripsiblokbox\par
+\addvspace{0.2\baselineskip}
+\parbox[t]{\wd\skripsiblokbox}{\raggedright\setlength{\parindent}{0pt}\small Sumber: Badan Pusat Statistik (data ilustrasi)}
+\end{table}
+\end{landscape}

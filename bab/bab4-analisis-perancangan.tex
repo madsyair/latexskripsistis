@@ -1,0 +1,49 @@
+\chapter{Analisis dan Perancangan}
+
+\section{Analisis Kebutuhan}
+Analisis kebutuhan dibagi menjadi kebutuhan fungsional dan nonfungsional.
+Kebutuhan fungsional sistem dirangkum pada Tabel~\ref{tab:fungsional}.
+
+\begin{table}[H]
+\centering
+\caption{Kebutuhan fungsional sistem}
+\label{tab:fungsional}
+\begin{tabular}{|c|l|}
+\hline
+\textbf{Kode} & \textbf{Kebutuhan Fungsional} \\ \hline
+\multicolumn{1}{|c|}{(1)} & \multicolumn{1}{c|}{(2)} \\ \hline
+KF-01 & Sistem dapat melakukan autentikasi pengguna. \\
+KF-02 & Sistem dapat mengunggah dan memvalidasi data. \\
+KF-03 & Sistem dapat menampilkan hasil prediksi. \\ \hline
+\end{tabular}
+\end{table}
+
+\section{Perancangan Proses (Use Case)}
+Interaksi pengguna dengan sistem digambarkan pada \emph{use case diagram}
+Gambar~\ref{gbr:usecase}.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+  \node (sys) [uc-sistem, minimum width=5cm, minimum height=4cm] at (2.2,0) {};
+  \node[above] at (sys.north) {\small Sistem};
+  \pic (akt) at (-2.2,0) {uc-aktor};
+  \node[below] at (-2.2,-1.2) {\small Pengguna};
+  \node[uc-case] (u1) at (2.2,1.2) {Login};
+  \node[uc-case] (u2) at (2.2,0)   {Unggah Data};
+  \node[uc-case] (u3) at (2.2,-1.2){Lihat Prediksi};
+  \draw[uc-asosiasi] (-2.0,0) -- (u1);
+  \draw[uc-asosiasi] (-2.0,0) -- (u2);
+  \draw[uc-asosiasi] (-2.0,0) -- (u3);
+\end{tikzpicture}
+\caption{Use case diagram sistem}
+\label{gbr:usecase}
+\end{figure}
+
+\section{Perancangan Basis Data}
+Bagian ini memuat rancangan basis data (mis.\ \emph{Entity Relationship Diagram})
+beserta struktur tabel.
+
+\section{Perancangan Antarmuka}
+Bagian ini memuat rancangan antarmuka (\emph{wireframe}/mockup) halaman utama
+sistem.

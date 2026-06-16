@@ -1,0 +1,34 @@
+% ============================================================
+%  indonesian-apa.lbx
+%  Lokalisasi bahasa Indonesia untuk biblatex-apa (gaya APA 7),
+%  disesuaikan dengan Pedoman Skripsi STIS:
+%    et al. -> dkk.   |  & / and -> dan (diatur via \DeclareDelimFormat
+%    di skripsistis.sty)  |  in -> Dalam  |  page(s) -> hal.
+%    editor -> Ed.  |  editors -> Eds.  |  translator(s) -> Penerj.
+%    edition -> Edisi
+%  Mewarisi seluruh istilah lain dari american-apa.
+% ============================================================
+\ProvidesFile{indonesian-apa.lbx}[2026/06/13 v1.0 Indonesian (APA) for biblatex]
+
+\InheritBibliographyExtras{american}
+
+\DeclareBibliographyStrings{%
+  inherit       = {american},
+  andothers     = {{dan lain-lain}{dkk\adddot}},
+  andmore       = {{dan lain-lain}{dkk\adddot}},
+  and           = {{dan}{dan}},
+  in            = {{Dalam}{Dalam}},
+  page          = {{halaman}{hal\adddot}},
+  pages         = {{halaman}{hal\adddot}},
+  editor        = {{Penyunting}{Ed\adddot}},
+  editors       = {{Penyunting}{Eds\adddot}},
+  translator    = {{Penerjemah}{Penerj\adddot}},
+  translators   = {{Penerjemah}{Penerj\adddot}},
+  byeditor      = {{disunting oleh}{disunting oleh}},
+  bytranslator  = {{diterjemahkan oleh}{diterj\adddotspace oleh}},
+  edition       = {{Edisi}{Edisi}},
+  references    = {{Daftar Pustaka}{Daftar Pustaka}},
+  bibliography  = {{Daftar Pustaka}{Daftar Pustaka}},
+}
+
+\endinput

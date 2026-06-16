@@ -1,0 +1,61 @@
+\chapter{Metode Penelitian}
+
+\section{Kerangka Pikir}
+Kerangka pikir penelitian disajikan pada Gambar~\ref{gbr:kerangka}.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[node distance=1.1cm]
+  \node[fc-mulai] (a) {Permasalahan};
+  \node[fc-proses, below=of a] (b) {Tujuan Penelitian};
+  \node[fc-proses, below=of b] (c) {Solusi yang Diajukan};
+  \node[fc-io, below=of c] (d) {Kriteria Evaluasi};
+  \draw[fc-panah] (a)--(b); \draw[fc-panah] (b)--(c); \draw[fc-panah] (c)--(d);
+\end{tikzpicture}
+\caption{Kerangka pikir penelitian}
+\label{gbr:kerangka}
+\end{figure}
+
+\section{Data dan Variabel}
+Data utama bersumber dari Survei Sosial Ekonomi Nasional (Susenas) yang diperoleh
+dari Badan Pusat Statistik (BPS). Variabel respons adalah pengeluaran per kapita.
+
+\section{Metrik Evaluasi}
+Kinerja klasifikasi dievaluasi menggunakan akurasi. Sebagai contoh persamaan di
+tengah paragraf, akurasi dihitung sebagai proporsi prediksi yang benar
+$\mathrm{akurasi} = \frac{TP+TN}{P+N}$ dengan $TP,TN,P,N$ berturut-turut menyatakan
+banyaknya prediksi positif benar, negatif benar, total observasi positif, dan
+total observasi negatif.
+
+Sebagai contoh persamaan pada baris tersendiri (perhatikan jaraknya yang rapat):
+\begin{equation}\label{eq:f1}
+F_1 = 2 \times \frac{\mathrm{precision}\times \mathrm{recall}}{\mathrm{precision}+\mathrm{recall}}.
+\end{equation}
+Persamaan~\ref{eq:f1} menjadi dasar evaluasi model. Untuk persamaan yang terlalu
+panjang, operator penghubung diletakkan di AWAL baris lanjutan:
+\begin{equation}\label{eq:model}
+\begin{aligned}
+\hat{y} ={}& \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3 + \beta_4 x_4 \\
+         &{}+ \beta_5 x_5 + \beta_6 x_6 .
+\end{aligned}
+\end{equation}
+
+\section{Prosedur Estimasi}
+Keseluruhan prosedur diringkas pada Algoritme~\ref{alg:pmt}.
+
+\begin{algorithm}[H]
+\caption{Estimasi dan evaluasi model PMT}\label{alg:pmt}
+\KwIn{Data rumah tangga $\mathbf{X}$, target $y$, jumlah lipatan $K$}
+\KwOut{Model terbaik $\hat{f}^\star$ dan metrik evaluasi}
+Praproses data (imputasi, penskalaan, penyandian)\;
+Bagi data menjadi himpunan latih dan uji\;
+\ForEach{algoritma kandidat $m$}{
+  \For{$k \leftarrow 1$ \KwTo $K$}{
+    Latih $m$ pada $K-1$ lipatan\;
+    Hitung metrik pada lipatan ke-$k$\;
+  }
+  Rerata metrik validasi silang untuk $m$\;
+}
+Pilih model dengan $F_1$ tertinggi sebagai $\hat{f}^\star$\;
+\KwRet $\hat{f}^\star$\;
+\end{algorithm}
