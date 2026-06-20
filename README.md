@@ -3,11 +3,14 @@
 Template LaTeX (Overleaf) untuk skripsi Prodi D-IV Komputasi Statistik, disusun
 mengikuti **Pedoman Penyusunan Skripsi Edisi Keenam (2025)**. Template ini adalah
 versi LaTeX murni dari paket R `skripsistis`, sehingga format (margin, font, judul
-bab, tabel, gambar, persamaan, daftar pustaka) sudah sesuai pedoman.
+bab, tabel, gambar, persamaan, daftar pustaka) dibuat supaya sesuai pedoman. Template 
+ini dalam versi pengembangan yang memungkinkan hasilnya belum sesuai pedoman sepenuhnya. 
+Masukan dan koreksi sangat diharapkan.
+
 
 ## Cara memakai di Overleaf
 
-1. **Unggah** berkas `skripsistis-overleaf.zip` ke Overleaf
+1. Simpan menjadi zip dan **Unggah** berkas `latexskripsistis.zip` ke Overleaf
    (New Project → Upload Project), atau salin seluruh berkas ke proyek baru.
 2. **Setel compiler ke XeLaTeX**: Menu → Settings → Compiler → **XeLaTeX**.
    (Wajib, karena memakai `fontspec`/Times New Roman. Berkas `latexmkrc` juga
@@ -106,5 +109,4 @@ skripsistis-overleaf/
 
 - Logo STIS (`img/logo_stis.png`) adalah milik Politeknik Statistika STIS dan
   disertakan hanya untuk keperluan templat skripsi institusi.
-- Bila Program Studi mensyaratkan kotak meterai pada halaman Pernyataan, tambahkan
-  sendiri pada `frontmatter/00-halaman-muka.tex`.
+
