@@ -336,6 +336,12 @@
   {\par\addvspace{0.5\baselineskip}\begingroup\setlength{\leftskip}{1.27cm}\noindent\ignorespaces}%
   {\par\endgroup\addvspace{0.5\baselineskip}\noindent}
 \RequirePackage[style=apa,backend=biber,sorting=nyt]{biblatex}
+% Tanggal akses daring memakai urutan Indonesia (Hari Bulan Tahun) & tak disingkat.
+\ExecuteBibliographyOptions{urldate=long,dateabbrev=false}
+\DeclareFieldFormat{urldate}{\bibstring{retrieved}\space
+  \iffieldundef{urlday}{}{\thefield{urlday}\nobreakspace}%
+  \mkbibmonth{\thefield{urlmonth}}\space\thefield{urlyear}%
+  \urldatecomma\bibstring{from}}
 % Lokalisasi APA bahasa Indonesia (dkk., Dalam, hal., Ed./Eds., Penerj., Edisi)
 % dimuat dari berkas terpisah indonesian-apa.lbx (mewarisi american-apa).
 \DeclareLanguageMapping{bahasa}{indonesian-apa}

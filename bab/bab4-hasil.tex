@@ -1,9 +1,15 @@
 \chapter{Hasil dan Pembahasan}
+\emph{Cara menulis bab ini.} Bab Hasil dan Pembahasan menyajikan temuan penelitian beserta pembahasannya: gambaran data, hasil pemodelan, dan interpretasinya yang dikaitkan dengan tujuan penelitian.
+
 
 \section{Gambaran Umum Data}
+\emph{Cara menulis.} Deskripsikan data yang digunakan: sumber, jumlah observasi/variabel, dan statistik ringkas.
+
 Bagian ini menyajikan gambaran umum data yang digunakan.
 
 \section{Contoh Penyajian Tabel}
+\emph{Cara menulis.} Tabel diberi judul di atas (rata tengah) dan sumber di tepi kiri objek; rujuk pada teks sebelum tabel muncul.
+
 Tabel~\ref{tab:miskin} menyajikan jumlah dan persentase penduduk miskin menurut
 daerah. Judul tabel diletakkan di ATAS, diberi baris nomor kolom (1), (2), (3),
 dan baris Sumber di bawah (untuk data sekunder).
@@ -24,12 +30,14 @@ Perdesaan  & 2.234,70 & 12,86 \\ \hline
 Total      & 3.875,88 & 9,50 \\ \hline
 \end{tabular}}%
 \usebox\skripsiblokbox\par
-\addvspace{0.2\baselineskip}
+\addvspace{0.4\spasi}
 % Sumber: tepat di tepi kiri tabel.
 \parbox[t]{\wd\skripsiblokbox}{\raggedright\setlength{\parindent}{0pt}\small Sumber: Badan Pusat Statistik (data ilustrasi)}
 \end{table}
 
 \section{Contoh Tabel Panjang (Lintas-Halaman)}
+\emph{Cara menulis.} Tabel yang melampaui satu halaman memakai \texttt{longtable}/\texttt{xltabular}; judul kolom diulang tiap halaman.
+
 Bila tabel melampaui satu halaman, gunakan \texttt{xltabular} agar judul kolom dan
 baris nomor kolom terulang otomatis pada setiap halaman dengan keterangan
 ``Tabel~N (lanjutan)''. Tabel panjang dibuat berlebar minimal 80\% lebar teks dan
@@ -55,11 +63,13 @@ dipusatkan (kolom label melebar, kolom angka tetap ringkas).
 4  & Kabupaten 04 & 822,0 & 11,30 \\
 5  & Kabupaten 05 & 221,4 & 10,95 \\
 \end{xltabular}
-\par\addvspace{0.2\baselineskip}
+\par\addvspace{0.4\spasi}
 \centerline{\parbox[t]{0.8\textwidth}{\raggedright\setlength{\parindent}{0pt}\small Sumber: Badan Pusat Statistik (data ilustrasi)}}
 \end{singlespace}
 
 \section{Contoh Penyajian Gambar}
+\emph{Cara menulis.} Gambar diberi judul di bawah (rata tengah) dan sumber di tepi kiri objek.
+
 Gambar~\ref{gbr:bar} menyajikan persentase penduduk miskin menurut daerah. Judul
 gambar diletakkan di BAWAH dan DIPUSATKAN; urutan: gambar, Sumber (tepi kiri gambar), lalu judul (pedoman).
 
@@ -77,7 +87,7 @@ gambar diletakkan di BAWAH dan DIPUSATKAN; urutan: gambar, Sumber (tepi kiri gam
   \draw[->] (-0.3,0) -- (-0.3,4.4) node[above,rotate=90,anchor=south west,xshift=-3.2cm]{\small Persentase (\%)};
 \end{tikzpicture}}%
 \usebox\skripsiblokbox\par
-\addvspace{0.15\sjudul}
+\addvspace{0.4\spasi}
 % Sumber: tepat di TEPI KIRI gambar, diletakkan SEBELUM judul (pedoman).
 \parbox[t]{\wd\skripsiblokbox}{\raggedright\setlength{\parindent}{0pt}\small Sumber: diolah dari Tabel~\ref{tab:miskin} (data ilustrasi)}\par
 % Judul gambar: di BAWAH gambar/sumber, DIPUSATKAN (center).
@@ -88,7 +98,116 @@ gambar diletakkan di BAWAH dan DIPUSATKAN; urutan: gambar, Sumber (tepi kiri gam
 Berdasarkan Gambar~\ref{gbr:bar}, persentase kemiskinan di perdesaan lebih tinggi
 dibandingkan perkotaan.
 
+\section{Contoh Grafik R sebagai LaTeX (Font Serasi)}
+\emph{Cara menulis.} Agar \textbf{font di dalam grafik sama persis dengan font naskah}
+(Times New Roman/TeX Gyre Termes), buat grafik di R dengan paket \texttt{tikzDevice}:
+keluarannya berupa berkas \texttt{.tex} (kode Ti\emph{k}Z) yang di-\texttt{input} ke
+naskah dan dikompilasi XeLaTeX bersama teks, bukan gambar raster. Jalankan kode R
+berikut sekali (di luar Overleaf, mis.\ di RStudio), lalu unggah berkas \texttt{.tex}
+hasilnya ke folder \texttt{img/}.
+
+\begin{lstlisting}
+library(tikzDevice)
+options(tikzDefaultEngine = "xetex")
+options(tikzXelatexPackages = c("\\usepackage{tikz}",
+        "\\usepackage{fontspec}", "\\setmainfont{TeX Gyre Termes}"))
+tikz("img/plot-r.tex", width = 4.6, height = 3.0, standAlone = FALSE)
+op <- par(mar = c(4, 4, 1, 1), family = "serif")   # 'serif' -> font naskah
+x <- 1:6; y <- c(11.2, 10.8, 9.9, 9.1, 8.4, 7.9)
+plot(x, y, type = "b", pch = 19,
+     xlab = "Tahun ke-", ylab = "Tingkat kemiskinan (\\%)")
+par(op); dev.off()
+\end{lstlisting}
+
+Gambar~\ref{gbr:rtikz} menyisipkan berkas tersebut; bandingkan font label sumbu dan
+angkanya dengan teks paragraf ini --- keduanya identik. Karena grafik berupa vektor, ia
+tidak pecah saat diperbesar; ukuran diatur lewat \texttt{width}/\texttt{height} (inci)
+pada \texttt{tikz()}.
+
+\begin{figure}[H]
+\centering
+% \input berkas .tex hasil tikzDevice; dibungkus sbox agar Sumber rata tepi kiri.
+\sbox\skripsiblokbox{\input{img/plot-r.tex}}%
+\usebox\skripsiblokbox\par
+\addvspace{0.4\spasi}
+\parbox[t]{\wd\skripsiblokbox}{\raggedright\setlength{\parindent}{0pt}\small Sumber: data ilustrasi (olahan sendiri)}\par
+\caption{Grafik R yang dirender sebagai LaTeX (font serasi dengan teks)}
+\label{gbr:rtikz}
+\end{figure}
+
+\section{Contoh Grafik dengan Simbol Matematika (Regresi)}
+\emph{Cara menulis.} Karena grafik tikz berupa kode LaTeX, \textbf{anotasi di dalam
+grafik dapat memuat simbol matematika} (mis.\ $\beta_0$, $\beta_1$, $\hat{y}$, $R^2$)
+yang identik dengan simbol pada teks. Tulis anotasi sebagai matematika LaTeX di dalam
+\texttt{\$...\$} pada argumen \texttt{labels}/\texttt{xlab}/\texttt{ylab}. Jalankan kode
+R berikut, lalu unggah \texttt{img/plot-regresi.tex} hasilnya.
+
+\begin{lstlisting}
+library(tikzDevice)
+options(tikzDefaultEngine = "xetex")
+options(tikzXelatexPackages = c("\\usepackage{tikz}",
+        "\\usepackage{amsmath}", "\\usepackage{fontspec}",
+        "\\setmainfont{TeX Gyre Termes}"))
+set.seed(7); x <- runif(40, 1, 10); y <- 2.3 + 1.8*x + rnorm(40, sd = 2.2)
+fit <- lm(y ~ x); b <- coef(fit); r2 <- summary(fit)$r.squared
+tikz("img/plot-regresi.tex", width = 5.0, height = 3.4, standAlone = FALSE)
+op <- par(mar = c(4, 4, 1, 1), family = "serif")
+plot(x, y, pch = 19, col = "grey30",
+     xlab = "Pengeluaran per kapita ($x$, juta Rp)",
+     ylab = "Skor kesejahteraan ($y$)")
+abline(fit, col = "red", lwd = 2); ya <- max(y)
+text(2.2, ya - 0.5, adj = 0, labels = "$\\hat{y} = \\beta_0 + \\beta_1 x$")
+text(2.2, ya - 3.0, adj = 0,
+     labels = sprintf("$\\hat{y} = %.2f + %.2f\\,x$", b[1], b[2]))
+text(2.2, ya - 5.5, adj = 0, labels = sprintf("$R^2 = %.3f$", r2))
+par(op); dev.off()
+\end{lstlisting}
+
+Gambar~\ref{gbr:reg} menyajikan garis regresi beserta persamaannya dalam bentuk simbol
+($\hat{y} = \beta_0 + \beta_1 x$) dan bentuk terisi (koefisien taksiran). Simbol
+$\beta_0$, $\beta_1$, $\hat{y}$, dan $R^2$ pada grafik dan pada teks ini dirender mesin
+yang sama sehingga seragam; pendekatan ini berlaku untuk simbol apa pun (mis.\ $\sum$,
+$\bar{x}$, $\sigma^2$, $\hat{\beta}$).
+
+\begin{figure}[H]
+\centering
+\sbox\skripsiblokbox{\input{img/plot-regresi.tex}}%
+\usebox\skripsiblokbox\par
+\addvspace{0.4\spasi}
+\parbox[t]{\wd\skripsiblokbox}{\raggedright\setlength{\parindent}{0pt}\small Sumber: data ilustrasi (olahan sendiri)}\par
+\caption{Garis regresi dengan persamaan bersimbol di dalam grafik}
+\label{gbr:reg}
+\end{figure}
+
+\section{Contoh Penomoran dan Rujukan Silang}
+\emph{Cara menulis.} Penomoran bab/subbab, persamaan, tabel, dan gambar dilakukan
+\textbf{otomatis} oleh LaTeX; cukup beri \texttt{\textbackslash label\{...\}} lalu rujuk
+dengan \texttt{\textbackslash ref\{...\}} (persamaan dengan \texttt{\textbackslash
+eqref\{...\}}). Nomor akan menyesuaikan sendiri bila urutan berubah, sehingga tidak
+perlu menomori manual.
+
+Sebagai contoh \textbf{persamaan bernomor}, koefisien Gini dirumuskan sebagai
+\begin{equation}\label{eq:gini}
+G = \frac{\sum_{i=1}^{n}\sum_{j=1}^{n} |x_i - x_j|}{2 n^2 \bar{x}}
+\end{equation}
+sehingga ketimpangan pada persamaan~\eqref{eq:gini} dihitung dari data pengeluaran.
+Rujukan antarobjek bersifat dinamis: Tabel~\ref{tab:miskin} dan
+Gambar~\ref{gbr:bar}/\ref{gbr:rtikz} otomatis memuat kata jenis beserta nomornya.
+
+\textbf{Daftar bernomor} ditulis dengan lingkungan \texttt{enumerate}:
+\begin{enumerate}
+  \item Tahap pertama: praproses dan pembersihan data.
+  \item Tahap kedua: pemodelan dan validasi.
+  \begin{enumerate}
+    \item subbutir dengan huruf;
+    \item subbutir berikutnya.
+  \end{enumerate}
+  \item Tahap ketiga: evaluasi dan interpretasi.
+\end{enumerate}
+
 \section{Contoh Tabel Lebar (Orientasi \emph{Landscape})}
+\emph{Cara menulis.} Objek yang terlalu lebar untuk orientasi potret diputar 90° (landscape) memakai \texttt{sidewaystable}/\texttt{landscape}.
+
 Tabel yang terlalu lebar untuk orientasi potret dapat disajikan pada halaman
 \emph{landscape}, atau diperkecil hingga ukuran huruf minimal 8 pt (pedoman).
 Tabel~\ref{tab:lebar} menyajikan contoh tabel lebar berorientasi \emph{landscape};
@@ -111,7 +230,7 @@ Jawa Tengah & 11,32 & 10,80 & 11,41 & 11,79 & 10,93 & 10,77 & 10,51 & 10,30 \\
 DI Yogyakarta & 11,81 & 11,44 & 12,28 & 11,91 & 11,49 & 11,04 & 10,83 & 10,62 \\ \hline
 \end{tabular}}%
 \usebox\skripsiblokbox\par
-\addvspace{0.2\baselineskip}
+\addvspace{0.4\spasi}
 \parbox[t]{\wd\skripsiblokbox}{\raggedright\setlength{\parindent}{0pt}\small Sumber: Badan Pusat Statistik (data ilustrasi)}
 \end{table}
 \end{landscape}
